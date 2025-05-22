@@ -19,8 +19,8 @@
 </li>
 
 <!-- Nav Item - Tables -->
-<li class="nav-item {{ request()->is('admin/resident*') ? 'active' : ''}}">
-    <a class="nav-link" href="{{route('admin.resident.index')}}">
+<li class="nav-item {{ request()->is('admin/Resident') ? 'active' : ''}}">
+    <a class="nav-link" href="{{route('admin.Resident.index')}}">
         <i class="fas fa-fw fa-table"></i>
         <span>Data Masyarakat</span></a>
 </li>

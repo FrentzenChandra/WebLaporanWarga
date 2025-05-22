@@ -26,6 +26,7 @@
 
 <body id="page-top">
 
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -45,6 +46,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                     @include('sweetalert2::index')
                     @yield('content')
                 </div>
                 <!-- /.container-fluid -->

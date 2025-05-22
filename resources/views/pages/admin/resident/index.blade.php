@@ -3,7 +3,7 @@
 @section('title', 'Data Masyarakat')
 
 @section('content')
-<a href="create.html" class="btn btn-primary mb-3">Tambah Data</a>
+<a href="{{route('admin.Resident.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
 
 
                     <div class="card shadow mb-4">
@@ -23,25 +23,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($residents as $resident) 
+                                        @foreach ($Resident as $Resident)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $resident->user->email}}</td>
-                                            <td>{{ $resident->user->name }}</td>
+                                            <td>{{ $Resident->user->email}}</td>
+                                            <td>{{ $Resident->user->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $resident->avatar) }}" alt="avatar" width="50" height="50">
+                                                <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="avatar" width="50" height="50" class="img-fluid">
                                             <td>
-                                                <a href="edit.html" class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('admin.Resident.edit', $Resident->id)}}" class="btn btn-warning">Edit</a>
 
-                                                <a href="show.html" class="btn btn-info">Show</a>
+                                                <a href="{{route('admin.Resident.show' , $Resident->id)}}" class="btn btn-info">Show</a>
 
-                                                <form action="" method="POST" class="d-inline">
+                                                <form action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
                                         @endforeach
-                                      
+
                                     </tbody>
                                 </table>
                             </div>

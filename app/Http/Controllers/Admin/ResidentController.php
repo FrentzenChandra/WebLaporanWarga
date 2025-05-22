@@ -3,25 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreResidentRequest;
+use App\Http\Requests\UpdateResidentRequest;
 use App\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
+use SweetAlert2\Laravel\Swal;
 
 class ResidentController extends Controller
 {
-    // ini berguna untuk membuat sebuah variabel residentRepository yang dimana
+    // ini berguna untuk membuat sebuah variabel ResidentRepository yang dimana
     // Resident Repository berisi function function model yang digunakan untuk memangil database
-    private ResidentRepositoryInterface $residentRepository;
-    public function __construct(ResidentRepositoryInterface $residentRepository)
+    private ResidentRepositoryInterface $ResidentRepository;
+    public function __construct(ResidentRepositoryInterface $ResidentRepository)
     {
-        $this->residentRepository = $residentRepository;
+        $this->ResidentRepository = $ResidentRepository;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $residents = $this->residentRepository->getAllResidents();
-        return view('pages.admin.resident.index', compact('residents'));
+        $Resident = $this->ResidentRepository->getAllResident();
+        return view('pages.admin.Resident.index', compact('Resident'));
     }
 
     /**
@@ -29,15 +34,27 @@ class ResidentController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.Resident.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreResidentRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $data['avatar'] = $request->file('avatar')->store('assets/avatar' , 'public');
+
+        $this->ResidentRepository->createResident($data);
+
+        Swal::fire([
+            'position' => "top-end",
+            'icon'=> "success",
+            'title'=> "Data Baru Berhasil Dibuat",
+            'showConfirmButton='=> TRUE,
+            'timer'=> 1000]);
+        return redirect()->route('admin.Resident.index');
     }
 
     /**
@@ -45,7 +62,9 @@ class ResidentController extends Controller
      */
     public function show(string $id)
     {
-        //
+       $Resident = $this->ResidentRepository->getResidentById($id);
+
+       return view('pages.admin.Resident.show', compact('Resident'));
     }
 
     /**
@@ -53,15 +72,37 @@ class ResidentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Resident = $this->ResidentRepository->getResidentById($id);
+        return view('pages.admin.Resident.edit', compact('Resident'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateResidentRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+
+        if ($request->avatar) {
+            $data['avatar'] = $request->file('avatar')->store('assets/avatar', 'public');
+            Storage::disk('public')->delete( $request['old-avatar']);
+        }else {
+            $data['avatar'] = $request['old-avatar'];
+        }
+
+
+        $this->ResidentRepository->updateResident($data, $id);
+
+
+          Swal::fire([
+            'position' => "top-end",
+            'icon'=> "success",
+            'title'=> "Data Berhasil Diubah",
+            'showConfirmButton='=> tRUE,
+            'timer'=> 1000]);
+
+        return redirect()->route('admin.Resident.index');
     }
 
     /**
@@ -69,6 +110,15 @@ class ResidentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->ResidentRepository->deleteResident($id);
+
+        Swal::fire([
+            'position' => "top-end",
+            'icon'=> "success",
+            'title'=> "Data Berhasil DiHapus",
+            'showConfirmButton=' => tRUE,
+            'timer'=> 1000]);
+
+        return redirect()->route('admin.Resident.index');
     }
 }

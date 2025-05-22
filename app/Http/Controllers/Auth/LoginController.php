@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
         $this->authRepository = $authRepository;
     }
-    public function index() 
+    public function index()
     {
         return view('pages.auth.login');
     }
@@ -30,21 +30,23 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             } else {
                 logger('Login gagal untuk email: ' . $credentials['email']);
+            }
         }
-    }
+
+        dd('Login User Berhasil');
 
         return redirect()->route('login')->withErrors([
             'email' => 'Email Salah',
             'password' => 'Password Salah'
         ]);
     }
-    
+
     public function logout() {
         $this->authRepository->logout();
-        
+
         return redirect()->route('login');
     }
-    
 
-    
+
+
 }

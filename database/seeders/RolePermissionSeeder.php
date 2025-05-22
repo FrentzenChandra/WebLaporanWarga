@@ -21,7 +21,7 @@ class RolePermissionSeeder extends Seeder
             'delete',
         ],
 
-        'resident' => [
+        'Resident' => [
             'view',
             'create',
             'edit',
@@ -68,7 +68,7 @@ class RolePermissionSeeder extends Seeder
         ])->givePermissionTo(Permission::all());
 
         Role::firstOrCreate([
-            'name' => 'resident',
+            'name' => 'Resident',
             'guard_name' => 'web'
         ])->givePermissionTo([
             'report-category-view',
