@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreResidentRequest extends FormRequest
+class StoreReportCategoryRequest extends FormRequest
 {
-
 
     /**
      * Get the validation rules that apply to the request.
@@ -15,11 +14,9 @@ class StoreResidentRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
-            'password' => 'required|min:8',
-            'avatar' => 'required|file|mimes:png,jpg,jpeg|max:2048',
+            'gambar' => 'required|file|mimes:png,jpg,jpeg|max:2048',
         ];
     }
 }

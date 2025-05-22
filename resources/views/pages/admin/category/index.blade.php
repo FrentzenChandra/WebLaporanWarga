@@ -3,12 +3,12 @@
 @section('title', 'Data Masyarakat')
 
 @section('content')
-<a href="{{route('admin.Resident.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
+<a href="{{route('admin.Category.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
 
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Masyarakat</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Kategori</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -16,26 +16,24 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Email</th>
                                             <th>Nama</th>
-                                            <th>Avatar</th>
+                                            <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Residents as $Resident)
+                                        @foreach ($categories as $category)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $Resident->user->email}}</td>
-                                            <td>{{ $Resident->user->name }}</td>
+                                            <td>{{ $category->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="avatar" width="50" height="50" class="img-fluid">
+                                                <img src="{{ asset('storage/' . $category->image) }}" alt="avatar" width="50" height="50" class="img-fluid">
                                             <td>
-                                                <a href="{{ route('admin.Resident.edit', $Resident->id)}}" class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('admin.Category.edit', $category->id)}}" class="btn btn-warning">Edit</a>
 
-                                                <a href="{{route('admin.Resident.show' , $Resident->id)}}" class="btn btn-info">Show</a>
+                                                <a href="{{route('admin.Category.show' , $category->id)}}" class="btn btn-info">Show</a>
 
-                                                <form action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline">
+                                                <form action="{{route('admin.Category.destroy' , $category->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Delete</button>

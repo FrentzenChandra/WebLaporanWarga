@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreResidentRequest;
 use App\Http\Requests\UpdateResidentRequest;
 use App\Interfaces\ResidentRepositoryInterface;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
 use SweetAlert2\Laravel\Swal;
 
 class ResidentController extends Controller
@@ -25,8 +23,8 @@ class ResidentController extends Controller
      */
     public function index()
     {
-        $Resident = $this->ResidentRepository->getAllResident();
-        return view('pages.admin.Resident.index', compact('Resident'));
+        $Residents = $this->ResidentRepository->getAllResident();
+        return view('pages.admin.Resident.index', compact('Residents'));
     }
 
     /**
@@ -51,7 +49,7 @@ class ResidentController extends Controller
         Swal::fire([
             'position' => "top-end",
             'icon'=> "success",
-            'title'=> "Data Baru Berhasil Dibuat",
+            'title'=> "Data Penduduk Baru Berhasil Dibuat",
             'showConfirmButton='=> TRUE,
             'timer'=> 1000]);
         return redirect()->route('admin.Resident.index');
@@ -98,7 +96,7 @@ class ResidentController extends Controller
           Swal::fire([
             'position' => "top-end",
             'icon'=> "success",
-            'title'=> "Data Berhasil Diubah",
+            'title'=> "Data Penduduk Berhasil Diubah",
             'showConfirmButton='=> tRUE,
             'timer'=> 1000]);
 
@@ -110,12 +108,17 @@ class ResidentController extends Controller
      */
     public function destroy(string $id)
     {
+        $resident = $this->ResidentRepository->getResidentById($id);
+
+        Storage::disk('public')->delete($resident['avatar']);
+
+
         $this->ResidentRepository->deleteResident($id);
 
         Swal::fire([
             'position' => "top-end",
             'icon'=> "success",
-            'title'=> "Data Berhasil DiHapus",
+            'title'=> "Data Penduduk Berhasil DiHapus",
             'showConfirmButton=' => tRUE,
             'timer'=> 1000]);
 

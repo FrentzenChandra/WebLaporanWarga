@@ -47,7 +47,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="avatar">Avatar <span class="text-danger fs-6">**input file baru untuk menganti gambar**</span></label>
+                            <label for="avatar">Avatar <span class="text-danger fs-6">( input file baru untuk menganti gambar )</span></label>
                             <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" value="{{old('avatar')}}" name="avatar" >
                             <div class="mt-4">Foto Sebelum</div>
                             <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="avatar" width="250" class="img-fluid">
