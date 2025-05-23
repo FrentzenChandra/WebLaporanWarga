@@ -10,22 +10,22 @@ class Report extends Model
     use SoftDeletes;
     protected $fillable = [
         'code',
-        'Resident_id',
+        'resident_id',
         'report_category_id',
         'title',
         'description',
         'image',
         'latitude',
-        'longtitude',
-        'address'
+        'longitude',
+        'address',
     ];
 
-    public function Resident()
+    public function resident()
     {
         return $this->belongsTo(Resident::class); // satu report dimiliki oleh satu Resident
     }
 
-    public function category()
+    public function report_category()
     {
         return $this->belongsTo(ReportCategory::class);
     }

@@ -5,6 +5,8 @@ interface ResidentRepositoryInterface
 {
     public function getAllResident();
 
+    public function getAllResidentFiltered(string $filterParam = "");
+
     public function getResidentById(int $id);
 
     public function createResident(array $data);

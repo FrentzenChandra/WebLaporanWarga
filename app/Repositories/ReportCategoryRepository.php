@@ -4,8 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Models\ReportCategory;
-use App\Models\Resident;
-use App\Models\User;
+
 
 class ReportCategoryRepository implements ReportCategoryRepositoryInterface
 {

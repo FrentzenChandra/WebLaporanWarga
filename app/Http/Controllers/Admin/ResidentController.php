@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateResidentRequest;
 use App\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 use SweetAlert2\Laravel\Swal;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ResidentController extends Controller
 {
@@ -33,6 +35,21 @@ class ResidentController extends Controller
     public function create()
     {
         return view('pages.admin.Resident.create');
+    }
+
+    public function filterData(Request $request)
+    {
+    $residents = DB::table('residents')
+        ->join('users' , 'users.id' ,'=', 'residents.user_id')
+        ->select('residents.id as id_resident',
+                'residents.user_id',
+                'residents.avatar',
+                'users.name' ,
+                'users.email')
+        ->where('residents.deleted_at', NULL)
+        ->whereAny(['name' , 'email'], 'like' , '%'.$request->q.'%')
+        ->get();
+    return response()->json($residents, 200);
     }
 
     /**
