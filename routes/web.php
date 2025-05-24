@@ -5,8 +5,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ReportCategoryController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\admin\ReportStatusController;
 use App\Http\Controllers\Admin\ResidentController;
-use App\Models\ReportCategory;
+use App\Models\ReportStatus;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +23,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('/Resident', ResidentController::class);
     Route::resource('/Category' , ReportCategoryController::class);
     Route::resource('/Report', ReportController::class);
+    Route::get('/Report/{ReportId}/Status/Create', [ReportStatusController::class, 'create'])->name('ReportStatus.Create');
+    Route::resource('/ReportStatus', ReportStatusController::class);
+
+
 });

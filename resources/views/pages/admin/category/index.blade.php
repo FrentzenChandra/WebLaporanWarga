@@ -33,10 +33,10 @@
 
                                                 <a href="{{route('admin.Category.show' , $category->id)}}" class="btn btn-info">Show</a>
 
-                                                <form action="{{route('admin.Category.destroy' , $category->id)}}" method="POST" class="d-inline">
+                                                <form id="deleteData" action="{{route('admin.Category.destroy' , $category->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -47,4 +47,33 @@
                             </div>
                         </div>
                     </div>
+@endsection
+
+
+@section('scripts')
+
+
+<script>
+    document.getElementById("deleteData").addEventListener("submit", function(event){
+        event.preventDefault()
+    });
+
+    function deleteDataConfirmation(){
+        Swal.fire({
+            title: "Kamu Yakin Mau Menghapus Data ini?",
+            text: "Data yang dihapus Tidak Bisa dikembalikan!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Iya, Hapus!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                    document.getElementById("deleteData").submit();
+            }
+        });
+    }
+
+</script>
+
 @endsection

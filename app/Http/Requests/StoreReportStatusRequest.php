@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateResidentRequest extends FormRequest
+class StoreReportStatusRequest extends FormRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -14,12 +13,11 @@ class UpdateResidentRequest extends FormRequest
      */
     public function rules(): array
     {
-       return [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|min:8',
-            'avatar' => 'file|mimes:png,jpg,jpeg|max:2048',
-            'old-avatar' => 'required|string',
+        return [
+            'report_id' => 'required|exists:reports,id',
+            'image' => 'required|file|mimes:png,jpg,jpeg|max:2048',
+            'status' => 'required|in:delivered,in_process,completed,rejected',
+            'description' => '',
         ];
     }
 }

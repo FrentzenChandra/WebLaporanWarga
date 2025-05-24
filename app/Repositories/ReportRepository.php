@@ -26,7 +26,7 @@ class ReportRepository implements ReportRepositoryInterface{
     public function deleteReport(int $id){
         $report = $this->getReportById($id);
 
-        return $report->delete();
+        return $report->forceDelete();
     }
 }
 ?>

@@ -23,8 +23,14 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    {{-- SweetAlert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <link href="{{asset ('assets/admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
+    @yield('scripts')
+
 
 
 
@@ -120,9 +126,10 @@
 
     <script src="{{ asset ('assets/admin/js/demo/datatables-demo.js')}}"></script>
 
-    {{-- Untuk Map --}}
+    {{-- Map --}}
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    @yield('scripts')
+
+
 
 </body>
 

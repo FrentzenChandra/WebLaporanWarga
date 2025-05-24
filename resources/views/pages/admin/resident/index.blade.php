@@ -35,10 +35,11 @@
 
                                                 <a href="{{route('admin.Resident.show' , $Resident->id)}}" class="btn btn-info">Show</a>
 
-                                                <form action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline">
+                                                <form id="deleteData" action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>
+
                                                 </form>
                                             </td>
                                         </tr>
@@ -50,3 +51,4 @@
                         </div>
                     </div>
 @endsection
+

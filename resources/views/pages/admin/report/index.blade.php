@@ -8,7 +8,7 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Kategori</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Data Laporan</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,9 +27,24 @@
                                         @foreach ($reports as $report)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <th>{{$report->code}}</th>
-                                            <th>Nama : {{$report->resident->user->name}} | Email : {{$report->resident->user->email}}</th>
-                                            <th>{{$report->report_category->name}}</th>
+
+                                            <td>{{$report->code}}</td>
+
+                                            @if($report->resident->user != NULL)
+                                            <td>Nama : {{$report->resident->user->name}} | Email : {{$report->resident->user->email}}</td>
+                                            @endif
+                                            @if($report->resident->user == NULL)
+                                            <td class="text-danger">Data Penduduk Telah Di Hapus</td>
+                                            @endif
+
+
+                                            @if($report->report_category  != NULL)
+                                            <td>{{$report->report_category->name}}</td>
+                                            @endif
+                                            @if($report->report_category == NULL)
+                                            <td class="text-danger">Data Kategori Telah Di Hapus</td>
+                                            @endif
+
                                             <td>
                                                 <img src="{{ asset('storage/' . $report->image) }}" alt="avatar" width="50" height="50" class="img-fluid">
                                             </td>
@@ -38,10 +53,10 @@
 
                                                 <a href="{{route('admin.Report.show' , $report->id)}}" class="btn btn-info">Show</a>
 
-                                                <form action="{{route('admin.Report.destroy' , $report->id)}}" method="POST" class="d-inline">
+                                            <form id="deleteData" action="{{route('admin.Report.destroy' , $report->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>
                                             </form>
                                             </td>
                                         </tr>

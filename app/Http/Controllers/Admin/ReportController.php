@@ -107,9 +107,7 @@ class ReportController extends Controller
 
         if ($request->image) {
             $data['image'] = $request->file('image')->store('assets/report', 'public');
-            Storage::disk('public')->delete($request['image']);
-        }else {
-            $data['image'] = $request['old-image'];
+            Storage::disk('public')->delete($request['old-image']);
         }
 
         $this->ReportRepository->updateReport($data, $id);
@@ -139,7 +137,7 @@ class ReportController extends Controller
         Swal::fire([
             'position' => "top-end",
             'icon'=> "success",
-            'title'=> "Data Penduduk Berhasil DiHapus",
+            'title'=> "Data Penduduk Berhasil Dihapus",
             'showConfirmButton=' => tRUE,
             'timer'=> 1000]);
 

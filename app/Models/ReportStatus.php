@@ -15,8 +15,8 @@ class ReportStatus extends Model
         'status'
     ];
 
-    public function Resident()
+    public function report()
     {
-        return $this->belongsTo(Report::class); // satu report status dimiliki oleh satu Resident
+        return $this->belongsTo(Report::class); // satu report status dimiliki oleh satu Report
     }
 }

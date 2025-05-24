@@ -102,8 +102,6 @@ class ResidentController extends Controller
         if ($request->avatar) {
             $data['avatar'] = $request->file('avatar')->store('assets/avatar', 'public');
             Storage::disk('public')->delete( $request['old-avatar']);
-        }else {
-            $data['avatar'] = $request['old-avatar'];
         }
 
 
@@ -128,7 +126,6 @@ class ResidentController extends Controller
         $resident = $this->ResidentRepository->getResidentById($id);
 
         Storage::disk('public')->delete($resident['avatar']);
-
 
         $this->ResidentRepository->deleteResident($id);
 

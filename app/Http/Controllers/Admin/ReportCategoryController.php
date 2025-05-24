@@ -88,8 +88,6 @@ class ReportCategoryController extends Controller
         if($request->gambar){
             $data['image'] = $request->file('gambar')->store('assets/reportCategory', 'public');
             Storage::disk('public')->delete( $request['old-image']);
-        }else {
-            $data['image'] = $request['old-image'];
         }
 
         $this->ReportCategoryRepository->updateReportCategory($data , $id);
