@@ -104,7 +104,7 @@
                                     {{$message}}
                                 </div>
                             @enderror
-                            <img src="{{ asset('storage/' . $report->image) }}" alt="avatar" width="300" class="img-fluid mt-3">
+                            <img src="{{ asset('storage/' . $report->image) }}" alt="gambar Error / tidak ditemukan" width="300" class="img-fluid mt-3">
                         </div>
                         <div class="form-group">
                             <label for="description">Deskripsi Laporan</label>

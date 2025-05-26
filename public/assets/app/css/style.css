@@ -571,6 +571,11 @@ textarea.form-control {
     color: #FEAC30;
 }
 
+.badge-status.rejected {
+    background-color: #E55050;
+}
+
+
 .badge-status.done {
     background-color: #16752B;
 }
@@ -598,6 +603,19 @@ textarea.form-control {
     align-items: center;
     background-color: #FFEBCC;
     color: #FEAC30;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 18px;
+    gap: 8px;
+    width: fit-content;
+}
+
+.badge-rejected {
+    display: flex;
+    align-items: center;
+    background-color: #ff3636;
+    color: #e6e6e6;
     font-size: 12px;
     font-weight: 500;
     padding: 8px 12px;

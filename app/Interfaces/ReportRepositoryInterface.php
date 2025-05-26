@@ -5,6 +5,12 @@ interface ReportRepositoryInterface
 {
     public function getAllReport();
 
+    public function getLatestReport();
+
+    public function getReportByCode(string $code);
+
+    public function getReportByCategory(string $category);
+
     public function getReportById(int $id);
 
     public function createReport(array $data);

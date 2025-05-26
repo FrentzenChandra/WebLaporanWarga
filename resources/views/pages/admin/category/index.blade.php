@@ -27,7 +27,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $category->image) }}" alt="avatar" width="50" height="50" class="img-fluid">
+                                                <img src="{{ asset('storage/' . $category->image) }}" alt="gambar Error / tidak ditemukan" width="50" height="50" class="img-fluid">
                                             <td>
                                                 <a href="{{ route('admin.Category.edit', $category->id)}}" class="btn btn-warning">Edit</a>
 
@@ -47,33 +47,4 @@
                             </div>
                         </div>
                     </div>
-@endsection
-
-
-@section('scripts')
-
-
-<script>
-    document.getElementById("deleteData").addEventListener("submit", function(event){
-        event.preventDefault()
-    });
-
-    function deleteDataConfirmation(){
-        Swal.fire({
-            title: "Kamu Yakin Mau Menghapus Data ini?",
-            text: "Data yang dihapus Tidak Bisa dikembalikan!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Iya, Hapus!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                    document.getElementById("deleteData").submit();
-            }
-        });
-    }
-
-</script>
-
 @endsection

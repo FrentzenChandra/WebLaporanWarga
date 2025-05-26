@@ -27,7 +27,7 @@
                         </tr>
                          <tr>
                             <td>Avatar</td>
-                            <td> <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="avatar" width="250" class="img-fluid"> </td>
+                            <td> <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="gambar Error / tidak ditemukan" width="250" class="img-fluid"> </td>
                         </tr>
                     </table>
                 </div>

@@ -33,12 +33,7 @@ class LoginController extends Controller
             }
         }
 
-        dd('Login User Berhasil');
-
-        return redirect()->route('login')->withErrors([
-            'email' => 'Email Salah',
-            'password' => 'Password Salah'
-        ]);
+        return redirect()->route('home');
     }
 
     public function logout() {

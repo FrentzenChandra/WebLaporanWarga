@@ -29,6 +29,6 @@ class ReportCategoryRepository implements ReportCategoryRepositoryInterface
     public function deleteReportCategory(int $id){
         $category = $this->getReportCategoryById($id);
 
-        return $category->delete();
+        return $category->forceDelete();
     }
 }

@@ -39,14 +39,14 @@
                         <tr>
                             <td>Bukti Laporan</td>
                             <td>
-                                <img src="{{ asset('storage/' . $report->image) }}" alt="avatar" width="300" class="img-fluid mt-3">
+                                <img src="{{ asset('storage/' . $report->image) }}" alt="gambar Error / tidak ditemukan" width="300" class="img-fluid mt-3">
                             </td>
                         </tr>
                         <tr>
                             <td>Kategori</td>
                             @if($report->report_category != NULL)
                             <td><div>{{$report->report_category->name}}</div>
-                                <img src="{{ asset('storage/' . $report->report_category->image) }}" alt="avatar" width="300" class="img-fluid mt-3">
+                                <img src="{{ asset('storage/' . $report->report_category->image) }}" alt="gambar Error / tidak ditemukan" width="300" class="img-fluid mt-3">
                             </td>
                             @endif
 
@@ -105,13 +105,13 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                @if($status->status == 'delivered') Sudah Terkirim @endif
+                                                @if($status->status == 'delivered') Telah Diserahkan @endif
                                                 @if($status->status == 'in_process') Sedang Di Proses @endif
                                                 @if($status->status == 'completed') Selesai @endif
                                                 @if($status->status == 'rejected') DiTolak @endif
                                             </td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $status->image) }}" alt="avatar" width="50" height="50" class="img-fluid">
+                                                <img src="{{ asset('storage/' . $status->image) }}" alt="gambar Error / tidak ditemukan" width="50" height="50" class="img-fluid">
                                             </td>
                                             <td>{{ $status->description }}</td>
                                             <td>

@@ -29,16 +29,16 @@
                                             <td>{{ $Resident->user->email}}</td>
                                             <td>{{ $Resident->user->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="avatar" width="50" height="50" class="img-fluid">
-                                            <td>
+                                                <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="gambar Error / tidak ditemukan" width="50" height="50" class="img-fluid">
+                                            <td >
                                                 <a href="{{ route('admin.Resident.edit', $Resident->id)}}" class="btn btn-warning">Edit</a>
 
                                                 <a href="{{route('admin.Resident.show' , $Resident->id)}}" class="btn btn-info">Show</a>
 
-                                                <form id="deleteData" action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline">
+                                                <form id="deleteData" action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline ml-4">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>
+                                                    <button class="btn btn-danger ">Delete</button>
 
                                                 </form>
                                             </td>

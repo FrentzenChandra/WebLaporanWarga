@@ -50,7 +50,7 @@
                             <label for="avatar">Avatar <span class="text-danger fs-6">( input file baru untuk menganti gambar )</span></label>
                             <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" value="{{old('avatar')}}" name="avatar" >
                             <div class="mt-4">Foto Sebelum</div>
-                            <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="avatar" width="250" class="img-fluid">
+                            <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="gambar Error / tidak ditemukan" width="250" class="img-fluid">
                             @error('avatar')
                                 <div class="invalid-feedback">
                                     {{$message}}

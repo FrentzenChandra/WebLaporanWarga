@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->foreignId('resident_id');
-            $table->foreignId('report_category_id');
+            $table->foreignId('resident_id')->references('id')->on('residents')->onDelete('RESTRICT');
+            $table->foreignId('report_category_id')->references('id')->on('report_categories')->onDelete('RESTRICT');
             $table->string('title');
             $table->longText('description')->default(NULL);
             $table->string('image');

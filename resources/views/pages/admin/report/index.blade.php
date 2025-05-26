@@ -46,17 +46,17 @@
                                             @endif
 
                                             <td>
-                                                <img src="{{ asset('storage/' . $report->image) }}" alt="avatar" width="50" height="50" class="img-fluid">
+                                                <img src="{{ asset('storage/' . $report->image) }}" alt="gambar Error / tidak ditemukan" width="50" height="50" class="img-fluid">
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.Report.edit', $report->id)}}" class="btn btn-warning">Edit</a>
 
                                                 <a href="{{route('admin.Report.show' , $report->id)}}" class="btn btn-info">Show</a>
 
-                                            <form id="deleteData" action="{{route('admin.Report.destroy' , $report->id)}}" method="POST" class="d-inline">
+                                            <form  id="deleteData" action="{{route('admin.Report.destroy' , $report->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>
+                                                    <button  onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>
                                             </form>
                                             </td>
                                         </tr>

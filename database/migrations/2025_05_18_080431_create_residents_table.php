@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Resident', function (Blueprint $table) {
+        Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('RESTRICT');
             $table->string('avatar');
             $table->softDeletes();
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Resident');
+        Schema::dropIfExists('residents');
     }
 };
