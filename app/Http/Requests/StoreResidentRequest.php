@@ -16,10 +16,10 @@ class StoreResidentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|string',
+            'avatar' => 'required|file|mimes:png,jpg,jpeg|max:2048',
             'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
             'password' => 'required|min:8',
-            'avatar' => 'required|file|mimes:png,jpg,jpeg|max:2048',
         ];
     }
 }

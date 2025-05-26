@@ -15,6 +15,12 @@
             <span class="mx-2">atau</span>
             <hr class="flex-grow-1">
         </div>
+        @session('success')
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ $value }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endsession
 
         <form action="{{ route('login.store') }}" method="POST" class="mt-4">
             @csrf
@@ -25,7 +31,7 @@
                 @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
-            </div>
+                </div>
             @enderror
                 </div>
 
@@ -36,7 +42,7 @@
                 @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}
-            </div>
+                </div>
             @enderror
             </div>
 
@@ -45,7 +51,7 @@
             </button>
 
             <div class="d-flex justify-content-between mt-3">
-                <a href="signup.html" class="text-decoration-none text-primary">Belum punya akun?</a>
+                <a href="{{ route('register') }}" class="text-decoration-none text-primary">Belum punya akun?</a>
                 <a href="" class="text-decoration-none text-primary">Lupa
                     Password</a>
             </div>
