@@ -69,7 +69,7 @@ class ResidentController extends Controller
             'title'=> "Data Penduduk Baru Berhasil Dibuat",
             'showConfirmButton='=> TRUE,
             'timer'=> 1000]);
-        return redirect()->route('admin.Resident.index');
+        return redirect()->route('admin.resident.index');
     }
 
     /**
@@ -115,7 +115,7 @@ class ResidentController extends Controller
             'showConfirmButton='=> tRUE,
             'timer'=> 1000]);
 
-        return redirect()->route('admin.Resident.index');
+        return redirect()->route('admin.resident.index');
     }
 
     /**
@@ -136,6 +136,6 @@ class ResidentController extends Controller
             'showConfirmButton=' => tRUE,
             'timer'=> 1000]);
 
-        return redirect()->route('admin.Resident.index');
+        return redirect()->route('admin.resident.index');
     }
 }

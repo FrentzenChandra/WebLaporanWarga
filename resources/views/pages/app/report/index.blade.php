@@ -9,10 +9,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <p class="text-muted">{{count($reports)}} List Pengaduan {{request()->category}}</p>
 
-                <button class="btn btn-filter" type="button">
-                    <i class="fa-solid fa-filter me-2"></i>
-                    Filter
-                </button>
+
 
             </div>
 
@@ -57,7 +54,7 @@
                                 <div class="d-flex align-items-center ">
                                     <img src="{{ asset('storage/assets/images/icons/map-pin.png') }}" alt="map pin" class="icon me-2">
                                     <p class="text-primary city">
-                                        {{$report->address}}
+                                        {{ \Str::substr($report->address, 0, 15) }}...
                                     </p>
                                 </div>
 

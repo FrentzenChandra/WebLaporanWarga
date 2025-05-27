@@ -48,7 +48,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function Resident()
+    public function resident()
     {
         return $this->hasOne(Resident::class); // satu user satu Resident
     }

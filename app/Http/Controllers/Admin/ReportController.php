@@ -143,4 +143,7 @@ class ReportController extends Controller
 
         return redirect()->route('admin.Report.index');
     }
+
+
+
 }

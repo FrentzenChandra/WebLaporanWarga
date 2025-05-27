@@ -3,7 +3,7 @@
 @section('title', 'Data Masyarakat')
 
 @section('content')
-<a href="{{route('admin.Resident.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
+<a href="{{route('admin.resident.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
 
 
                     <div class="card shadow mb-4">
@@ -31,11 +31,11 @@
                                             <td>
                                                 <img src="{{ asset('storage/' . $Resident->avatar) }}" alt="gambar Error / tidak ditemukan" width="50" height="50" class="img-fluid">
                                             <td >
-                                                <a href="{{ route('admin.Resident.edit', $Resident->id)}}" class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('admin.resident.edit', $Resident->id)}}" class="btn btn-warning">Edit</a>
 
-                                                <a href="{{route('admin.Resident.show' , $Resident->id)}}" class="btn btn-info">Show</a>
+                                                <a href="{{route('admin.resident.show' , $Resident->id)}}" class="btn btn-info">Show</a>
 
-                                                <form id="deleteData" action="{{route('admin.Resident.destroy' , $Resident->id)}}" method="POST" class="d-inline ml-4">
+                                                <form id="deleteData" action="{{route('admin.resident.destroy' , $Resident->id)}}" method="POST" class="d-inline ml-4">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger ">Delete</button>

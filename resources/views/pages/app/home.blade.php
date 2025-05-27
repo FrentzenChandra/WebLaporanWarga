@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="max-w-screen-sm mx-auto bg-white min-vh-100 p-3">
-        <h6 class="greeting">Hi, User 👋</h6>
+        <h6 class="greeting">Hi, {{Auth::user()->name}}</h6>
         <h4 class="home-headline">Laporkan masalahmu dan kami segera atasi itu</h4>
 
         <div class="d-flex align-items-center  gap-4 py-3 overflow-auto" id="category"

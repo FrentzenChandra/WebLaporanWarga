@@ -7,7 +7,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <a href="{{route('admin.Resident.index')}}" class="btn btn-danger mb-3">Kembali</a>
+            <a href="{{route('admin.resident.index')}}" class="btn btn-danger mb-3">Kembali</a>
 
 
             <!-- DataTales Example -->
@@ -16,7 +16,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah Data Penduduk</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.Resident.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.resident.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Nama</label>
