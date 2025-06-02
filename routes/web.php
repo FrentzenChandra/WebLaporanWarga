@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ReportCategoryController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ReportStatusController;
 use App\Http\Controllers\Admin\ResidentController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileController;
@@ -16,6 +17,11 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
@@ -48,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/{id}/edit', [RegisterController::class, 'editUser'])->name('profile.edit');
+    Route::put('/profile/{id}/update', [RegisterController::class, 'store'])->name('profile.store');
 
     Route::get('/UserReport/take', [UserReportController::class, 'take'])->name('userReport.take');
     Route::get('/UserReport/take/preview', [UserReportController::class, 'preview'])->name('userReport.preview');

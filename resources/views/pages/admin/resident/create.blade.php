@@ -39,6 +39,8 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{old('password')}}" name="password" >
+                            <input class="form-check-label mt-3" type="checkbox" onclick="toggleVisiblePassword()">  Lihat Password
+
                             @error('password')
                                 <div class="invalid-feedback">
                                     {{$message}}
@@ -64,4 +66,14 @@
             </div>
         </div>
 
+        <script>
+            function toggleVisiblePassword() {
+            var x = document.getElementById("password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
 @endsection

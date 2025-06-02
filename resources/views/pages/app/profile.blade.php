@@ -3,7 +3,7 @@
 @section('title' , 'home')
 
 @section('content')
-
+        @if(!Auth::user()->hasRole('admin'))
         <div class="d-flex flex-column justify-content-center align-items-center gap-2">
             <img src="{{asset('storage/' . Auth::user()->resident->avatar)}}" alt="avatar" class="avatar">
             <h5>{{Auth::user()->name}}</h5>
@@ -28,9 +28,17 @@
 
         </div>
 
+        @session('message')
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                {{ $value }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endsession
+
+
         <div class="mt-4">
             <div class="list-group list-group-flush">
-                <a href="#"
+                <a href="{{route('profile.edit' , Auth::user()->resident->id )}}"
                     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center gap-3">
                         <i class="fa-solid fa-user"></i>
@@ -38,7 +46,7 @@
                     </div>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
-                <a href="#"
+                <a href="{{route('forget.password.get')}}"
                     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center gap-3">
                         <i class="fa-solid fa-lock"></i>
@@ -55,6 +63,7 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </div>
+            @endif
 
             <div class="mt-4">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >

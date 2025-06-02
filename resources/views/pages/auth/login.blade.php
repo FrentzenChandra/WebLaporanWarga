@@ -19,17 +19,17 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
 
-                @error('email')
+            @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
                 </div>
 
-            <div class="mb-3">
+            <div class="mb-3 ">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
-
+                <input class="form-check-label mt-3" type="checkbox" onclick="toggleVisiblePassword()">  Lihat Password
                 @error('password')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -43,9 +43,20 @@
 
             <div class="d-flex justify-content-between mt-3">
                 <a href="{{ route('register') }}" class="text-decoration-none text-primary">Belum punya akun?</a>
-                <a href="" class="text-decoration-none text-primary">Lupa
+                <a href="{{route('forget.password.get')}}" class="text-decoration-none text-primary">Lupa
                     Password</a>
             </div>
 
         </form>
+        <script>
+            function toggleVisiblePassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+            }
+        </script>
         @endsection
+

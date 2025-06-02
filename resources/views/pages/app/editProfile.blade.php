@@ -1,22 +1,21 @@
-@extends('layouts.admin')
+@extends('layouts.editProfileTemplate')
 
 @section('title' , "Tambah Data Masyarakat")
 
 @section('content')
 
-        <div class="container-fluid">
+        <div class="container-fluid mt-5">
 
             <!-- Page Heading -->
-            <a href="{{route('admin.resident.index')}}" class="btn btn-danger mb-3">Kembali</a>
 
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Data Penduduk</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Profil</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.resident.update', $Resident->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile.store', $Resident->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -39,8 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{old('password')}}" name="password" >
-                            <input class="form-check-label mt-3" type="checkbox" onclick="toggleVisiblePassword()">  Lihat Password
+                            <input readonly type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{old('password')}}" name="password" >
 
                             @error('password')
                                 <div class="invalid-feedback">
@@ -72,14 +70,5 @@
                 </div>
             </div>
         </div>
-        <script>
-            function toggleVisiblePassword() {
-            var x = document.getElementById("password");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }
-        </script>
+
 @endsection
