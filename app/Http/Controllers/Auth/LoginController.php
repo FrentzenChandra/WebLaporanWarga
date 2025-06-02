@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLoginRequest;
 use App\Interfaces\AuthRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,6 +24,7 @@ class LoginController extends Controller
     }
 
     public function store(StoreLoginRequest $request){
+
         $credentials = $request->validated();
 
         if($this->authRepository->login($credentials)) {
@@ -33,7 +35,11 @@ class LoginController extends Controller
             }
         }
 
+        if (Auth::attempt($credentials)) {
         return redirect()->route('home');
+        }
+        return back()->with('message', 'Email or Password salah');
+
     }
 
     public function logout() {

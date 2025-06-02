@@ -9,6 +9,7 @@ use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ResidentRepositoryInterface;
 use App\Repositories\ResidentRepository;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use SweetAlert2\Laravel\Swal;
@@ -55,21 +56,36 @@ class ReportController extends Controller
      */
     public function store(StoreReportRequest $request)
     {
-        $data = $request->validated();
-        $data['report_category_id'] = $data['category_id'];
-        $data['code'] = 'LAPOR_KETAP'. mt_rand(100000, 9999999);
+        try {
+            $data = $request->validated();
+            $data['report_category_id'] = $data['category_id'];
+            $data['code'] = 'LAPOR_KETAP'. mt_rand(100000, 9999999);
 
-        $data['image'] = $request->file('image')->store('assets/report' , 'public');
+            $data['image'] = $request->file('image')->store('assets/report' , 'public');
+            if($data['image'] == false){
+                throw new Exception("Error Processing Request", 1);
 
-        $this->ReportRepository->createReport($data);
+            }
+        } catch (\Throwable $th) {
 
+            Swal::fire([
+            'position' => "top-end",
+            'icon'=> 'error',
+            'title'=> "Data Laporan Berhasil Dibuat",
+            'showConfirmButton='=> tRUE,
+            'timer'=> 1000]);
 
-          Swal::fire([
+        } finally{
+            $this->ReportRepository->createReport($data);
+
+             Swal::fire([
             'position' => "top-end",
             'icon'=> "success",
             'title'=> "Data Laporan Berhasil Dibuat",
             'showConfirmButton='=> tRUE,
             'timer'=> 1000]);
+        }
+
 
         return redirect()->route('admin.Report.index');
     }

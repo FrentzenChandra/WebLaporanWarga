@@ -61,7 +61,7 @@
 
                         <div class="d-flex justify-content-between align-items-end mb-2">
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('storage/assets/images/icons/map-pin.png') }}" alt="map pin" class="icon me-2 img-fluid" >
+                                <img src="{{ asset('storage/assets/images/icons/mapPin.png') }}" alt="map pin" class="icon me-2 img-fluid" >
                                 <p class="text-primary city">
                                     {{$report->address}}
                                 </p>

@@ -5,15 +5,14 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ReportCategoryController;
 use App\Http\Controllers\Admin\ReportController;
-use App\Http\Controllers\admin\ReportStatusController;
+use App\Http\Controllers\Admin\ReportStatusController;
 use App\Http\Controllers\Admin\ResidentController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserReportController;
-use App\Models\ReportStatus;
-
-
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -25,8 +24,28 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 Route::get('/Report', [UserReportController::class , 'index'])->name('userReport');
 Route::get('/Report/{code}', [UserReportController::class, 'show'])->name('userReport.show');
 
+Route::get('/email/verify', function () {
+        return view('pages.auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('success', 'Verification link sent!');
+})->middleware(['auth','throttle:6,1'])->name('verification.send');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class , 'index'])->name('home');
+
+
+
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
@@ -40,9 +59,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
-
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin' , ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('/resident', ResidentController::class);

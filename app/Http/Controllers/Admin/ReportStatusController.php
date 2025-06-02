@@ -7,7 +7,6 @@ use App\Http\Requests\StoreReportStatusRequest;
 use App\Http\Requests\UpdateReportStatusRequest;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ReportStatusRepositoryInterface;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use SweetAlert2\Laravel\Swal;
 

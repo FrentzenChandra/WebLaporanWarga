@@ -20,9 +20,9 @@
         <div></div>
         <div></div>
         <div></div>
-        <a href="" class="{{url()->current() === route('userReport.take') ? 'active' : ''}}">
-            <i class="fas fa-bell"></i>
-            Notifikasi
+        <a href="https://id.wikipedia.org/wiki/Ketap,_Jebus,_Bangka_Barat" target="_blank" rel="noopener noreferrer"  class="{{url()->current() === route('userReport.take') ? 'active' : ''}}">
+            <i class="fas fa-users "></i>
+            Tentang Kami
         </a>
         <a href="{{route('profile')}}" class="{{url()->current() === route('profile') ? 'active' : ''}}">
             <i class="fas fa-user"></i>

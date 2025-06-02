@@ -5,6 +5,7 @@ use App\Interfaces\ResidentRepositoryInterface;
 use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Auth\Events\Registered;
 
 class ResidentRepository implements ResidentRepositoryInterface
 {
@@ -43,7 +44,8 @@ class ResidentRepository implements ResidentRepositoryInterface
 
         $user->assignRole('resident');
 
-        return $user->resident()->create($data);
+        $user->resident()->create($data);
+        return $user;
     }
 
     public function updateResident(array $data, int $id)

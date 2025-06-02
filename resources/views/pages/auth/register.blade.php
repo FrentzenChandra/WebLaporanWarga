@@ -41,7 +41,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="avatar" class="form-label">Nama Lengkap</label>
+                <label for="avatar" class="form-label">Masukkan Gambar Profile</label>
                 <input type="file" class="form-control @error('avatar') is-invalid @enderror" value="{{ old('avatar') }}" id="avatar" name="avatar">
                 @error('avatar')
                 <div class="invalid-feedback">

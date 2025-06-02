@@ -21,5 +21,7 @@ class StoreResidentRequest extends FormRequest
             'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
             'password' => 'required|min:8',
         ];
+
+
     }
 }

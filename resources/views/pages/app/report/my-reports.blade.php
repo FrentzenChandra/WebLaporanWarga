@@ -61,7 +61,7 @@
 
                                     <div class="d-flex justify-content-between align-items-end mb-2">
                                         <div class="d-flex align-items-center ">
-                                            <img src="{{ asset('storage/assets/images/icons/map-pin.png') }}" alt="map pin" class="icon me-2">
+                                            <img src="{{ asset('storage/assets/images/icons/mapPin.png') }}" alt="map pin" class="icon me-2">
                                             <p class="text-primary city">
                                                 {{ \Str::substr($report->address, 0, 15) }}...
                                             </p>
@@ -89,7 +89,7 @@
                             autoplay
                             ></dotlottie-player>
                             <h5 class="mt-3">Belum ada laporan</h5>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-3">
+                            <a href="{{route('userReport.take')}}" class="btn btn-primary py-2 px-4 mt-3">
                                 Buat Laporan
                             </a>
                         </div>
@@ -99,7 +99,7 @@
             </div>
             <div class="tab-pane fade" id="diproses-tab-pane" role="tabpanel" aria-labelledby="diproses-tab"
                 tabindex="0">
-                @forelse ($reports as $report)
+                @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
                     <a href="{{route('userReport.show' , $report->code)}}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
@@ -137,7 +137,7 @@
 
                             <div class="d-flex justify-content-between align-items-end mb-2">
                                 <div class="d-flex align-items-center ">
-                                    <img src="{{ asset('storage/assets/images/icons/map-pin.png') }}" alt="map pin" class="icon me-2">
+                                    <img src="{{ asset('storage/assets/images/icons/mapPin.png') }}" alt="map pin" class="icon me-2">
                                     <p class="text-primary city">
                                         {{ \Str::substr($report->address, 0, 15) }}...
                                     </p>
@@ -154,26 +154,10 @@
                         </div>
                     </a>
                 </div>
-
-                @empty
-                    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 75vh" id="no-reports">
-                        <dotlottie-player
-                        src="https://lottie.host/b2efa24e-9245-4253-ae7f-50b65f115c11/rGXIfMy2nP.lottie"
-                        background="transparent"
-                        speed="1"
-                        style="width: 300px; height: 300px"
-                        loop
-                        autoplay
-                        ></dotlottie-player>
-                        <h5 class="mt-3">Belum ada laporan</h5>
-                        <a href="" class="btn btn-primary py-2 px-4 mt-3">
-                            Buat Laporan
-                        </a>
-                    </div>
-                @endforelse
+                @endforeach
             </div>
             <div class="tab-pane fade" id="selesai-tab-pane" role="tabpanel" aria-labelledby="selesai-tab" tabindex="0">
-                @forelse ($reports as $report)
+                @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
                     <a href="{{route('userReport.show' , $report->code)}}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
@@ -211,7 +195,7 @@
 
                             <div class="d-flex justify-content-between align-items-end mb-2">
                                 <div class="d-flex align-items-center ">
-                                    <img src="{{ asset('storage/assets/images/icons/map-pin.png') }}" alt="map pin" class="icon me-2">
+                                    <img src="{{ asset('storage/assets/images/icons/mapPin.png') }}" alt="map pin" class="icon me-2">
                                     <p class="text-primary city">
                                         {{ \Str::substr($report->address, 0, 15) }}...
                                     </p>
@@ -228,25 +212,10 @@
                         </div>
                     </a>
                 </div>
-                @empty
-                    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 75vh" id="no-reports">
-                        <dotlottie-player
-                        src="https://lottie.host/b2efa24e-9245-4253-ae7f-50b65f115c11/rGXIfMy2nP.lottie"
-                        background="transparent"
-                        speed="1"
-                        style="width: 300px; height: 300px"
-                        loop
-                        autoplay
-                        ></dotlottie-player>
-                        <h5 class="mt-3">Belum ada laporan</h5>
-                        <a href="" class="btn btn-primary py-2 px-4 mt-3">
-                            Buat Laporan
-                        </a>
-                    </div>
-                @endforelse
+                @endforeach
             </div>
             <div class="tab-pane fade" id="ditolak-tab-pane" role="tabpanel" aria-labelledby="ditolak-tab" tabindex="0">
-                @forelse ($reports as $report)
+                @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
                     <a href="{{route('userReport.show' , $report->code)}}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
@@ -284,7 +253,7 @@
 
                             <div class="d-flex justify-content-between align-items-end mb-2">
                                 <div class="d-flex align-items-center ">
-                                    <img src="{{ asset('storage/assets/images/icons/map-pin.png') }}" alt="map pin" class="icon me-2">
+                                    <img src="{{ asset('storage/assets/images/icons/mapPin.png') }}" alt="map pin" class="icon me-2">
                                     <p class="text-primary city">
                                         {{ \Str::substr($report->address, 0, 15) }}...
                                     </p>
@@ -301,22 +270,8 @@
                         </div>
                     </a>
                 </div>
-                @empty
-                    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 75vh" id="no-reports">
-                        <dotlottie-player
-                        src="https://lottie.host/b2efa24e-9245-4253-ae7f-50b65f115c11/rGXIfMy2nP.lottie"
-                        background="transparent"
-                        speed="1"
-                        style="width: 300px; height: 300px"
-                        loop
-                        autoplay
-                        ></dotlottie-player>
-                        <h5 class="mt-3">Belum ada laporan</h5>
-                        <a href="" class="btn btn-primary py-2 px-4 mt-3">
-                            Buat Laporan
-                        </a>
-                    </div>
-                @endforelse
+
+                @endforeach
             </div>
         </div>
 

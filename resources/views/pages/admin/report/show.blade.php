@@ -118,8 +118,6 @@
 
                                                 <a href="{{ route('admin.ReportStatus.edit', $status->id)}}" class="btn btn-warning">Edit</a>
 
-                                                <a href="{{route('admin.ReportStatus.show' , $status->id)}}" class="btn btn-info">Show</a>
-
                                                 <form id="deleteData" action="{{route('admin.ReportStatus.destroy' , $status->id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')

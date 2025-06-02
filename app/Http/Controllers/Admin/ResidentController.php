@@ -26,7 +26,7 @@ class ResidentController extends Controller
     public function index()
     {
         $Residents = $this->ResidentRepository->getAllResident();
-        return view('pages.admin.Resident.index', compact('Residents'));
+        return view('pages.admin.resident.index', compact('Residents'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ResidentController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.Resident.create');
+        return view('pages.admin.resident.create');
     }
 
     public function filterData(Request $request)
@@ -79,7 +79,7 @@ class ResidentController extends Controller
     {
        $Resident = $this->ResidentRepository->getResidentById($id);
 
-       return view('pages.admin.Resident.show', compact('Resident'));
+       return view('pages.admin.resident.show', compact('Resident'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ResidentController extends Controller
     public function edit(string $id)
     {
         $Resident = $this->ResidentRepository->getResidentById($id);
-        return view('pages.admin.Resident.edit', compact('Resident'));
+        return view('pages.admin.resident.edit', compact('Resident'));
     }
 
     /**

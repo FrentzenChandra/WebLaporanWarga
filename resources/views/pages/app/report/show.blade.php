@@ -106,7 +106,6 @@
         <div class="card card-report-information mt-4">
             <div class="card-body">
                 <div class="card-title mb-4 fw-bold">Riwayat Perkembangan</div>
-
                 <ul class="timeline">
                     @foreach ($report->status as $status)
                     <li class="timeline-item">

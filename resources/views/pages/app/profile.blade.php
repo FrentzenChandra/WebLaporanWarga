@@ -46,7 +46,7 @@
                     </div>
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
-                <a href="#"
+                <a href="https://id.wikipedia.org/wiki/Ketap,_Jebus,_Bangka_Barat"
                     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center gap-3">
                         <i class="fa-solid fa-question-circle"></i>
