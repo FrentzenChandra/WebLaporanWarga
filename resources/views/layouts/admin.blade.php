@@ -28,6 +28,8 @@
 
 
     <link href="{{asset ('assets/admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('storage/assets/images/icons/iconDesaKetap.png') }}">
+
 
     @yield('scripts')
 

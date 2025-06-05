@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile/{id}/edit', [RegisterController::class, 'editUser'])->name('profile.edit');
-    Route::put('/profile/{id}/update', [RegisterController::class, 'store'])->name('profile.store');
+    Route::put('/profile/{id}/update', [RegisterController::class, 'updateUser'])->name('profile.store');
 
     Route::get('/UserReport/take', [UserReportController::class, 'take'])->name('userReport.take');
     Route::get('/UserReport/take/preview', [UserReportController::class, 'preview'])->name('userReport.preview');

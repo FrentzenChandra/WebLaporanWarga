@@ -29,22 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" readonly class="form-control @error('email') is-invalid @enderror" id="email" value="{{old('email' , $Resident->user->email)}}" name="email" >
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{$message}}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input readonly type="password" class="form-control @error('password') is-invalid @enderror" id="password" value="{{old('password')}}" name="password" >
-
-                            @error('password')
-                                <div class="invalid-feedback">
-                                    {{$message}}
-                                </div>
-                            @enderror
+                            <input type="email" readonly class="form-control @error('email') is-invalid @enderror" id="email" value="{{old('email' , $Resident->user->email)}}" >
                         </div>
                         <div class="form-group">
                             <label for="avatar">Avatar <span class="text-danger fs-6">( input file baru untuk menganti gambar )</span></label>

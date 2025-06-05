@@ -25,6 +25,8 @@
 
     {{-- SweetAlert2 --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/png" href="{{ asset('storage/assets/images/icons/iconDesaKetap.png') }}">
+
 
 
     <link href="{{asset ('assets/admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">

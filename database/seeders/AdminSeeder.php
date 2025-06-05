@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'Admin Lapor Pak',
             'email' => 'admin@laporpak.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('adminlaporketap2025'),
         ])->assignRole('admin');
     }
 }

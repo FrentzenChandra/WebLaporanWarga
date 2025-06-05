@@ -38,7 +38,7 @@
                                                 <form id="deleteData" action="{{route('admin.resident.destroy' , $Resident->id)}}" method="POST" class="d-inline ml-4">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger ">Delete</button>
+                                                    <button class="btn btn-danger">Delete</button>
 
                                                 </form>
                                             </td>

@@ -53,7 +53,7 @@
 
                                                 <a href="{{route('admin.Report.show' , $report->id)}}" class="btn btn-info">Show</a>
 
-                                            <form  id="deleteData" action="{{route('admin.Report.destroy' , $report->id)}}" method="POST" class="d-inline">
+                                            <form  id="deleteData" action="{{route('admin.Report.destroy' , $report->id)}}" method="POST" class="d-inline ml-4">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button  onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>

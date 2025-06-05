@@ -33,7 +33,7 @@
 
                                                 <a href="{{route('admin.Category.show' , $category->id)}}" class="btn btn-info">Show</a>
 
-                                                <form id="deleteData" action="{{route('admin.Category.destroy' , $category->id)}}" method="POST" class="d-inline">
+                                                <form id="deleteData" action="{{route('admin.Category.destroy' , $category->id)}}" method="POST" class="d-inline ml-4">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="deleteDataConfirmation()" class="btn btn-danger">Delete</button>

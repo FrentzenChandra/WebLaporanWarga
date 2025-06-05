@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreResidentRequest;
+use App\Http\Requests\UpdateResidentProfileFrontend;
 use App\Http\Requests\UpdateResidentRequest;
 use App\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updateUser(UpdateResidentRequest $request, string $id)
+    public function updateUser(UpdateResidentProfileFrontend $request, string $id)
     {
         if (Auth::user()->resident->id == $id) {
             $data = $request->validated();
@@ -90,6 +91,8 @@ class RegisterController extends Controller
 
             return redirect()->route('profile');
         }
+
+        return redirect()->route('profile')->with('message', 'Kamu Tidak Diperbolehkan Untuk Melakukan Edit Pada Akun Itu!!!');
     }
 
 }
